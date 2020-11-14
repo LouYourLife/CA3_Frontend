@@ -16,7 +16,7 @@ import Login from "./Login";
 import facade from "./apiFacade";
 import LoggedIn from "./LoggedIn";
 import LoginForm from "./loginForm";
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, TabContainer } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -144,22 +144,25 @@ function FetchAllMovies() {
         {array.map((data) => {
           return (
             <>
-              <Row className="block-row border border-bottom-0 border-dark">
-                <Col className="center"><p>Fetched from {data.URL}</p></Col>
+            <Container className="block-row border border-dark">
+              <Row /* className="block-row border border-bottom-0 border-dark" */>
+                <Col><p>Fetched from {data.URL}</p></Col>
               </Row>
-              <Row className="block-row border border-bottom-0 border-dark">
+              <br/>
+              <Row /* className="block-row border border-bottom-0 border-dark" */>
                 <Col><p>Title: {data.title}</p></Col>
                 <Col><p>Episode: {data.episode_id}</p></Col>
                 <Col><p>Release date: {data.release_date}</p></Col>
               </Row>
-              <Row className="block-row border border-dark">
+              <Row /* className="block-row border border-dark" */>
                 <Col><p>Director: {data.director}</p></Col>
                 <Col><p>Producer: {data.producer}</p></Col>
               </Row>
-              <Row className="block-row border border-top-0 border-dark">
+              <Row /* className="block-row border border-top-0 border-dark" */>
                 <Col><p>{data.opening_crawl}</p></Col>
               </Row>
               <br />
+              </Container>
             </>
           );
         })}
