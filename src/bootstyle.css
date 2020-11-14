@@ -7,6 +7,7 @@
 }
 
 .block-row {
+    width: 70rem;
     background-color: #eee;
     display: inline-block;
 }

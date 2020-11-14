@@ -145,7 +145,7 @@ function FetchAllMovies() {
           return (
             <>
               <Row className="block-row border border-bottom-0 border-dark">
-                <Col className="center"><p>Fetched from {data.url}</p></Col>
+                <Col className="center"><p>Fetched from {data.URL}</p></Col>
               </Row>
               <Row className="block-row border border-bottom-0 border-dark">
                 <Col><p>Title: {data.title}</p></Col>
