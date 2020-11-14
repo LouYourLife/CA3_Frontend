@@ -3,7 +3,9 @@ import {
     userInfoEndpoint,
     adminInfoEndpoint,
     defaultEndpoint,
-    loginEndpoint} from "./settings";
+    loginEndpoint,
+    allMoviesEndpoint,
+    pitchedMoviesEndpoint} from "./settings";
 
  
 function handleHttpErrors(res) {
@@ -53,9 +55,40 @@ const fetchDefault = (callback) => {
    return fetch(mainURL + defaultEndpoint, options)
    .then(handleHttpErrors)
    .then(data => {callback(data)})
-   
 }
 
+const fetchAllMovies = (callback) => {
+  const options = makeOptions("GET");
+  return fetch(mainURL + allMoviesEndpoint, options)
+  .then(handleHttpErrors)
+  .then(data => {callback(data)});
+}
+
+const fetchPitchedMovies = (callback) => {
+  const options = makeOptions("GET", true);
+  return fetch(mainURL + pitchedMoviesEndpoint, options)
+  .then(handleHttpErrors)
+  .then(data => {callback(data)});
+}
+
+function addMovie(res) {
+  const url = mainURL + defaultEndpoint;
+  const optionsPost = makeOptions("POST", true, {
+    title: res.title,
+    episode_id: res.episode_id,
+    opening_crawl: res.opening_crawl,
+    director: res.director,
+    producer: res.producer,
+    release_date: res.release_date,
+  });
+
+  console.log(optionsPost);
+  fetch(url, optionsPost)
+  .then(handleHttpErrors)
+  .then((data) => {
+    document.getElementById("succesAdd").innerHTML = "Succes!";
+  });
+}
 
 const makeOptions= (method,addToken,body) =>{
    var opts = {
@@ -73,6 +106,7 @@ const makeOptions= (method,addToken,body) =>{
    }
    return opts;
  }
+
  return {
      makeOptions,
      setToken,
@@ -82,7 +116,10 @@ const makeOptions= (method,addToken,body) =>{
      logout,
      fetchDataUser,
      fetchDataAdmin,
-     fetchDefault
+     fetchDefault,
+     fetchAllMovies,
+     fetchPitchedMovies,
+     addMovie
  }
 }
 const facade = apiFacade();

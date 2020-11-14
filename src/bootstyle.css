@@ -1,0 +1,12 @@
+.block-example {
+    width: 6rem;
+    height: 6rem;
+    margin: 0.5rem;
+    background-color: #eee;
+    display: inline-block;
+}
+
+.block-row {
+    background-color: #eee;
+    display: inline-block;
+}
